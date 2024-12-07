@@ -33,6 +33,12 @@ model Location {
   updatedAt   DateTime @updatedAt
 }
 
+enum TreeStatus {
+  DELETED
+  WARNING
+  WELL
+}
+
 model Tree {
   id Int @id @default(autoincrement())
 
@@ -41,6 +47,30 @@ model Tree {
 
   name   Name @relation(fields: [nameId], references: [id])
   nameId Int
+
+  imgUrl  String
+  species String // Тип дерева, например "Яблоня", "Дуб"
+  age     Int // Возраст дерева (в годах)
+
+  lastWatered  DateTime // Дата последнего полива
+  wateringFreq Int // Частота полива (например, раз в 7 дней)
+
+  pestResistance    Boolean // Устойчивость к вредителям
+  diseaseResistance Boolean // Устойчивость к болезням
+
+  sunlight    String // Требования к освещению (например, "Полное солнце", "Полутень")
+  temperature Float // Идеальная температура (например, в градусах Цельсия)
+  humidity    Float // Идеальный уровень влажности
+
+  lastHarvest DateTime? // Дата последнего сбора урожая
+  harvestQty  Float? // Количество собранного урожая (например, в кг)
+
+  lastTreated DateTime? // Дата последней обработки от болезней
+
+  status TreeStatus @default(WELL) // Default status is 'WELL'
+
+  row    Int
+  column Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -48,6 +48,17 @@ export class NameController {
 
   @Put(':id')
   @ApiOperation({ summary: 'Update name' })
+  @ApiBody({
+    type: CreateNameDto,
+    examples: {
+      example1: {
+        value: {
+          name: 'Name',
+          description: 'Description',
+        },
+      },
+    },
+  })
   updateName(
     @Param('id', ParseIntPipe) id: number,
     @Body() createNameDto: CreateNameDto,

@@ -75,6 +75,17 @@ __decorate([
 __decorate([
     (0, common_1.Put)(':id'),
     (0, swagger_1.ApiOperation)({ summary: 'Update name' }),
+    (0, swagger_1.ApiBody)({
+        type: CreateName_dto_1.CreateNameDto,
+        examples: {
+            example1: {
+                value: {
+                    name: 'Name',
+                    description: 'Description',
+                },
+            },
+        },
+    }),
     __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

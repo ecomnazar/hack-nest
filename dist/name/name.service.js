@@ -35,6 +35,7 @@ let NameService = class NameService {
         const name = this.prisma.name.findUnique({ where: { id } });
         if (!name)
             throw new common_1.HttpException('Name not found', 404);
+        return this.prisma.name.delete({ where: { id } });
     }
 };
 exports.NameService = NameService;

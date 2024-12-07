@@ -27,5 +27,6 @@ export class NameService {
   deleteNameById(id: number) {
     const name = this.prisma.name.findUnique({ where: { id } });
     if (!name) throw new HttpException('Name not found', 404);
+    return this.prisma.name.delete({ where: { id } });
   }
 }

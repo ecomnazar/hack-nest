@@ -31,5 +31,11 @@ export declare class NameService {
         createdAt: Date;
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs>;
-    deleteNameById(id: number): void;
+    deleteNameById(id: number): Prisma.Prisma__NameClient<{
+        name: string;
+        id: number;
+        description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }, never, import("@prisma/client/runtime/library").DefaultArgs>;
 }

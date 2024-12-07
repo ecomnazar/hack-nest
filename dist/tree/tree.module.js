@@ -6,21 +6,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.TreeModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const locations_module_1 = require("./locations/locations.module");
-const name_module_1 = require("./name/name.module");
-const tree_module_1 = require("./tree/tree.module");
-let AppModule = class AppModule {
+const tree_service_1 = require("./tree.service");
+const tree_controller_1 = require("./tree.controller");
+const prisma_module_1 = require("../prisma/prisma.module");
+let TreeModule = class TreeModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.TreeModule = TreeModule;
+exports.TreeModule = TreeModule = __decorate([
     (0, common_1.Module)({
-        imports: [locations_module_1.LocationsModule, name_module_1.NameModule, tree_module_1.TreeModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        imports: [prisma_module_1.PrismaModule],
+        controllers: [tree_controller_1.TreeController],
+        providers: [tree_service_1.TreeService],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], TreeModule);
+//# sourceMappingURL=tree.module.js.map

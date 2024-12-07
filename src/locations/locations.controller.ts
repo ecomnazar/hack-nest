@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { LocationsService } from './locations.service';
 import { CreateLocationDto } from './dto/CreateLocationDto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiBody, ApiOperation } from '@nestjs/swagger';
 
 @Controller('locations')
 export class LocationsController {
@@ -30,12 +30,38 @@ export class LocationsController {
 
   @Post()
   @ApiOperation({ summary: 'Create location' })
+  @ApiBody({
+    type: CreateLocationDto,
+    examples: {
+      example1: {
+        value: {
+          name: 'Name',
+          description: 'Description',
+          lat: 77.12,
+          lng: 77.12,
+        },
+      },
+    },
+  })
   create(@Body() createLocationDto: CreateLocationDto) {
     return this.locationsService.create(createLocationDto);
   }
 
   @Put(':id')
   @ApiOperation({ summary: 'Update location' })
+  @ApiBody({
+    type: CreateLocationDto,
+    examples: {
+      example1: {
+        value: {
+          name: 'Name',
+          description: 'Description',
+          lat: 77.12,
+          lng: 77.12,
+        },
+      },
+    },
+  })
   updateLocation(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateLocation: CreateLocationDto,

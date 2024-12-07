@@ -9,38 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LocationsService = void 0;
+exports.NameService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
-let LocationsService = class LocationsService {
+let NameService = class NameService {
     constructor(prisma) {
         this.prisma = prisma;
     }
     getAll() {
-        return this.prisma.location.findMany();
+        return this.prisma.name.findMany();
     }
-    getById(id) {
-        return this.prisma.location.findUnique({ where: { id } });
+    getNameById(id) {
+        return this.prisma.name.findUnique({ where: { id } });
     }
-    create(data) {
-        return this.prisma.location.create({ data });
+    createName(data) {
+        return this.prisma.name.create({ data });
     }
-    update(id, data) {
-        const location = this.prisma.location.findUnique({ where: { id } });
-        if (!location)
-            throw new common_1.HttpException('Location by this ID not found', 404);
-        return this.prisma.location.update({ where: { id }, data });
+    updateName(id, data) {
+        const name = this.prisma.name.findUnique({ where: { id } });
+        if (!name)
+            throw new common_1.HttpException('Name by this ID not found', 404);
+        return this.prisma.name.update({ where: { id }, data });
     }
-    delete(id) {
-        const location = this.prisma.location.findUnique({ where: { id } });
-        if (!location)
-            throw new common_1.HttpException('Location not found', 404);
-        return this.prisma.location.delete({ where: { id } });
+    deleteNameById(id) {
+        const name = this.prisma.name.findUnique({ where: { id } });
+        if (!name)
+            throw new common_1.HttpException('Name not found', 404);
     }
 };
-exports.LocationsService = LocationsService;
-exports.LocationsService = LocationsService = __decorate([
+exports.NameService = NameService;
+exports.NameService = NameService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], LocationsService);
-//# sourceMappingURL=locations.service.js.map
+], NameService);
+//# sourceMappingURL=name.service.js.map
